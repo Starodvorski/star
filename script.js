@@ -4,11 +4,11 @@ const words2 = ["кабинет ", "казинак ", "бобину ", "табл
 function getRandomWord() {
   const randomIndex = Math.floor(Math.random() * words.length);
   const randomWord = words[randomIndex];
-  document.getElementById("random-word").innerText = randomWord;
+  document.getElementById("word1").innerText = randomWord;
   
   const randomIndex2 = Math.floor(Math.random() * words2.length);
   const randomWord2 = words2[randomIndex2];
-  document.getElementById("random-word2").innerText = randomWord2;
+  document.getElementById("word2").innerText = randomWord2;
   document.getElementById("word-button").innerText = "ещё раз";
 }
 
