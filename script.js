@@ -9,4 +9,5 @@ function getRandomWord() {
   const randomIndex2 = Math.floor(Math.random() * words2.length);
   const randomWord2 = words2[randomIndex2];
   document.getElementById("random-word2").innerText = randomWord2;
+  document.getElementById("word-button").innerText = "ещё раз";
 }
