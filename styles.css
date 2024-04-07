@@ -20,17 +20,22 @@ main {
     height: max-content;
     max-width: 1200px;
     color: white;
-    padding: 2rem 2.5rem;
+    padding: 2rem 2rem;
 }
 .content{
     line-height: 1.6;
     width: 100%;
     height: max-content;
-    max-width: 1170px;
+    max-width: 100%;
     color: white;
     position: static;
     padding: 1.5rem 0rem;
 }
+@media (max-width: 1200px) {
+    .content{
+        padding: 1.5rem 1rem;
+    }
+  }
 .inlineblock {
     display: inline-block;
     margin: 0 0px;
