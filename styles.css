@@ -16,7 +16,7 @@ body {
 main {
     overflow-wrap: break-word;
     background-color: #0b0b0b;
-    width: 100%;
+    width: 95%;
     height: max-content;
     max-width: 1200px;
     color: white;
@@ -26,14 +26,16 @@ main {
     line-height: 1.6;
     width: 100%;
     height: max-content;
-    max-width: 100%;
     color: white;
-    position: static;
     padding: 1.5rem 0rem;
+    justify-content: left;
 }
 @media (max-width: 1200px) {
+    main{
+        padding: 0rem 1rem;
+    }
     .content{
-        padding: 1.5rem 1rem;
+        padding: 1.5rem 0rem;
     }
   }
 .inlineblock {
