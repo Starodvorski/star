@@ -1,15 +1,20 @@
-const words = ["Шлёпнуть", "Смять", "Хрустнуть", "Проследить", "Скрутить", "Очертить", "Завояжить", "Дать в", "Расквасить", "Сорвать", "Развернуть", "Отправить в", "Въебать в", "Раскусить", "Вынести", "Раздерибанить", "Распидорасить", "Абстрагировать", "Вскрыть", "Припиздячить", "Вырвать", "Порвать", "Распиздячить", "Оформить", "Смакай"];
-const words2 = ["кабинет ", "казинак ", "бобину ", "табло ", "рапсодию ", "периметр  ", "кибитку ", "сертаки ", "парапет ", "пломбу ", "чердак ", "Барановичи ", "аврал ", "герменевтику ", "капитал ", "Чебоксары ", "мачту ", "ебало ", "пилораму ", "кавардак ", "фуникулёр ", "киянку ", "кадило ", "декрет ", "яйки"];
 
-function getRandomWord() {
-  const randomIndex = Math.floor(Math.random() * words.length);
-  const randomWord = words[randomIndex];
-  document.getElementById("word1").innerText = randomWord;
-  
-  const randomIndex2 = Math.floor(Math.random() * words2.length);
-  const randomWord2 = words2[randomIndex2];
-  document.getElementById("word2").innerText = randomWord2;
-  document.getElementById("word-button").innerText = "ещё раз";
-}
-
-
+//для меню
+document.addEventListener('DOMContentLoaded', function() {
+  const headerContainer = document.getElementById('header-container');
+  fetch('header.html')
+    .then(response => response.text())
+    .then(data => {
+      headerContainer.innerHTML = data;
+      // Подключаем скрипт для работы меню
+      const menuToggle = headerContainer.querySelector('#toggleMenu');
+      const menu = headerContainer.querySelector('#menu');
+      menuToggle.addEventListener('click', function() {
+        if (menu.style.display === 'none' || menu.style.display === '') {
+          menu.style.display = 'block';
+        } else {
+          menu.style.display = 'none';
+        }
+      });
+    });
+});

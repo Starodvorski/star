@@ -12,35 +12,36 @@
 
 </head>
 <body>
-    <div class="header1">
-        <div>
-            <a href="index.html">Starodvorski</a>
-        </div>
-        <div>
-            &nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;
-        </div>
-        <div>
-            <a href="deaththreats.html">угрозы</a>
-            <a href="about.html">контакты</a>
-        </div>
-    </div>
+    <div id="header-container"></div>
+    <script src="script.js"></script>
+    
     
     <main>
     <div class="content">
-        <div style="font-size: 2em; text-align: center;" >
-
-        </div>
-        <div class="box" style="text-align: center;">
+            
+            <div class="box" style="text-align: center;">
             <b style="font-size: 2em;">ноу-хау<br></b>
             <div style="font-size: 1.2em;"><b>создай новую, ранее невиданную угрозу</b></div>
             <div style="line-height: 3;" class="inlineblock" id="word1">&lt;&nbsp;</div>
             <div class="inlineblock" id="word2">&gt;&nbsp;</div>
             <div style="text-align: center;"><button id="word-button" onclick="getRandomWord()">сделать</button></div>
+            </div>
+        <script>
+                        const words = ["Шлёпнуть", "Смять", "Хрустнуть", "Проследить", "Скрутить", "Очертить", "Завояжить", "Дать в", "Расквасить", "Сорвать", "Развернуть", "Отправить в", "Въебать в", "Раскусить", "Вынести", "Раздерибанить", "Распидорасить", "Абстрагировать", "Вскрыть", "Припиздячить", "Вырвать", "Порвать", "Распиздячить", "Оформить", "Смакай"];
+            const words2 = ["кабинет ", "казинак ", "бобину ", "табло ", "рапсодию ", "периметр  ", "кибитку ", "сертаки ", "парапет ", "пломбу ", "чердак ", "Барановичи ", "аврал ", "герменевтику ", "капитал ", "Чебоксары ", "мачту ", "ебало ", "пилораму ", "кавардак ", "фуникулёр ", "киянку ", "кадило ", "декрет ", "яйки"];
+
+            function getRandomWord() {
+            const randomIndex = Math.floor(Math.random() * words.length);
+            const randomWord = words[randomIndex];
+            document.getElementById("word1").innerText = randomWord;
             
-        </div>
-            
-        
-    <p>сверху то 3 кнопки если что там где Starodvorski угрозы контакты</p>
+            const randomIndex2 = Math.floor(Math.random() * words2.length);
+            const randomWord2 = words2[randomIndex2];
+            document.getElementById("word2").innerText = randomWord2;
+            document.getElementById("word-button").innerText = "ещё раз";
+            }
+        </script>
+    
         <p>проверкасвязипроверкасвязипроверкасвязипроверасвязипроверкасвязипроверкасвязипроверкасвязипроверкасвязипроверкасвязипроверкасвязипроверкасвязипроверкасвязипроверкасвязи</p>
         <p>проверка связи</p>
         <p>проверка связи</p>
@@ -73,6 +74,5 @@
 
     </div>
     </main>
-<script src="script.js"></script>
 </body>
 </html>

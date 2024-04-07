@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Starodvorski</title>
+<link rel="stylesheet" href="styles.css">
+
+<link rel="icon" href="img/icon.ico" type="image/x-icon">
+<link rel="shortcut icon" href="img/icon.ico" type="image/x-icon">
+
+</head>
+<body>
+    <header>
+        <span style="display: flex; justify-content: space-between;">
+            <a style="padding-left: 2rem; line-height: 0.5;" href="index.html">Starodvorski</a>
+            <span style="line-height: 0.5;" id="toggleMenu">&#9776;</span>
+        </span>
+        
+        
+        <div style="text-align: right;">
+            
+            <ul id="menu" style="display: none;">
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="deaththreats.html">Угрозы</a></li>
+                <li><a href="polischukdictionary.html">Словарь Полищука</a></li>
+                <li><a href="about.html">Контакты</a></li>
+            </ul>
+        </div>
+    </header>
+    <script>
+        document.getElementById('toggleMenu').addEventListener('click', function() {
+        var menu = document.getElementById('menu');
+        if (menu.style.display === 'none') {
+            menu.style.display = 'block';
+        } else {
+            menu.style.display = 'none';
+        }
+        });
+    </script>
+</body>
+</html>
