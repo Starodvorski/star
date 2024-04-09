@@ -18,16 +18,19 @@
     
     <main>
     <div class="content">
-            
-            <div class="box" style="text-align: center;">
-            <b style="font-size: 2em;">ноу-хау<br></b>
-            <div style="font-size: 1.2em;"><b>создай новую, ранее невиданную угрозу</b></div>
-            <div style="line-height: 3;" class="inlineblock" id="word1">&lt;&nbsp;</div>
-            <div class="inlineblock" id="word2">&gt;&nbsp;</div>
-            <div style="text-align: center;"><button id="word-button" onclick="getRandomWord()">сделать</button></div>
+            <div style="display: flex; justify-content: space-evenly; flex-wrap: wrap;">
+
+                <div class="box" style="text-align: center;">
+                    <b style="font-size: 2em;">ноу-хау<br></b>
+                    <div style="font-size: 1.2em;"><b>создай новую, ранее невиданную угрозу</b></div>
+                    <div style="line-height: 3;" class="inlineblock" id="word1">&lt;&nbsp;</div>
+                    <div class="inlineblock" id="word2">&gt;&nbsp;</div>
+                    <div style="text-align: center;"><button id="word-button" onclick="getRandomWord()">сделать</button></div>
+                </div>
+                
             </div>
         <script>
-                        const words = ["Шлёпнуть", "Смять", "Хрустнуть", "Проследить", "Скрутить", "Очертить", "Завояжить", "Дать в", "Расквасить", "Сорвать", "Развернуть", "Отправить в", "Въебать в", "Раскусить", "Вынести", "Раздерибанить", "Распидорасить", "Абстрагировать", "Вскрыть", "Припиздячить", "Вырвать", "Порвать", "Распиздячить", "Оформить", "Смакай"];
+            const words = ["Шлёпнуть", "Смять", "Хрустнуть", "Проследить", "Скрутить", "Очертить", "Завояжить", "Дать в", "Расквасить", "Сорвать", "Развернуть", "Отправить в", "Въебать в", "Раскусить", "Вынести", "Раздерибанить", "Распидорасить", "Абстрагировать", "Вскрыть", "Припиздячить", "Вырвать", "Порвать", "Распиздячить", "Оформить", "Смакай"];
             const words2 = ["кабинет ", "казинак ", "бобину ", "табло ", "рапсодию ", "периметр  ", "кибитку ", "сертаки ", "парапет ", "пломбу ", "чердак ", "Барановичи ", "аврал ", "герменевтику ", "капитал ", "Чебоксары ", "мачту ", "ебало ", "пилораму ", "кавардак ", "фуникулёр ", "киянку ", "кадило ", "декрет ", "яйки"];
 
             function getRandomWord() {
@@ -41,7 +44,7 @@
             document.getElementById("word-button").innerText = "ещё раз";
             }
         </script>
-    
+        
         <p>проверкасвязипроверкасвязипроверкасвязипроверасвязипроверкасвязипроверкасвязипроверкасвязипроверкасвязипроверкасвязипроверкасвязипроверкасвязипроверкасвязипроверкасвязи</p>
         <p>проверка связи</p>
         <p>проверка связи</p>
