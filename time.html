@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+
+        function tanyaClock(){
+            
+            let d = new Date();
+            let hours = d.getHours();
+            let minutes = d.getMinutes();
+            let seconds = d.getSeconds();
+    
+            if (hours < 10){
+                hours = "0" + hours;
+            }
+            if (minutes < 10){
+                minutes = "0" + minutes;
+            }
+            if (seconds < 10){
+                seconds = "0" + seconds;
+            }
+            
+            document.getElementById("time").innerText = hours + " : " + minutes + " : " + seconds;
+
+            document.getElementById("hourHand").style.transform = "rotate(" + hours * 30 + "deg)";
+            document.getElementById("minuteHand").style.transform = "rotate(" + minutes * 6 + "deg)";
+            document.getElementById("secondHand").style.transform = "rotate(" + seconds * 6 + "deg)";
+
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            tanyaClock();
+            setInterval(function() {
+                tanyaClock();
+            }, 1000);
+        });
+
+    </script>
+    <style>
+        .flex-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 95vh;
+        }
+        .inner{
+            background-color: white; 
+            height: 50%;
+        }
+        .hands{
+            transform: translate(-50%, 0%);
+            opacity: 30%;
+        }
+    </style>
+</head>
+<body style="background-color: #111; color: white; font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">
+
+    <div class="flex-container" style="color: yellow;">
+        <span style="font-size: 5vw; z-index: 150;">Танины часы</span>
+        <span style="font-size: 10vw; z-index: 150;" id="time"></span>
+        
+        
+        <div style="position: absolute; width: 100vh; height: 100vh;">
+            <div style="display: flex; justify-content: center; align-items: center; width: 100%; height: 100%;">
+                
+                
+                <div class="hands" id="hourHand" style="height: 50%; width: 1.5vh; position: absolute; top: 25%;"> <div class="inner"></div> </div>
+                <div class="hands" id="minuteHand" style="height: 70%; width: 1.2vh; position: absolute; top: 15%;"> <div class="inner"></div> </div>
+                <div class="hands" id="secondHand" style="height: 90%; width: 0.8vh; position: absolute; top: 5%;"> <div class="inner"></div> </div>
+                
+                <div style="background-color: #111; width: 8vh; height: 8vh; border-radius: 50%; z-index: 100;"></div>
+            </div>
+            
+        </div>
+    </div>
+    
+</body>
+</html>
