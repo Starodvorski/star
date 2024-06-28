@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Move</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: black;
+            font-family: 'Courier New', Courier, monospace;
+            background-image: url(img/twinkle.png);
+            background-size: 50%;
+        }
+        #container {
+            width: 100vw;
+            height: 100vh;
+        }
+        .div{
+            position: absolute;
+            width: 100px;
+            height: 100px;
+        }
+        .span {
+            display: flex;
+            color: rgb(0, 255, 0);
+            z-index: 1000;
+            justify-content: center;
+            font-size: 4em;
+            margin-top: 0.25em;
+        }
+        img {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: -1000;
+        }
+        .button{
+            position: fixed;
+            left: 50px;
+            bottom: 15px;
+            opacity: 30%;
+        }
+        .btn{
+            cursor: default;
+            font-size: 0.5em;
+            color: white;
+            background-color: red;
+            bottom: 5px;
+            z-index: 1000;
+            width: 14px;
+            height: 20px;
+            opacity: 0%;  /*тут поставить opacity на 0 чтобы скрыть кнопки*/
+        }
+        button:hover {
+            opacity: 33%; 
+        }
+    </style>
+</head>
+<body id="body">
+    
+    <div id="container">
+        <div id="resultsStroke" style="position: absolute; left: 10px; top: 10px; z-index: 10000; opacity: 100%; color: white; font-size: 0.7em; -webkit-text-stroke: 2px black;"></div>
+        <div id="results" style="position: absolute; left: 10px; top: 10px; z-index: 10000; opacity: 100%; color: white; font-size: 0.7em;"></div>
+    </div>
+    <button class="button" onclick="createDiv(1, 20)">создать</button>
+
+    <!--тут создавать кнопки, максимальное и минимальное значение задается в onclick="createDiv(min, max)"-->
+    <!--менять style="left: __px; top: __px" для расположения. размеры этих кнопок в классе btn-->
+    <div class="button btn" style="left: 50px;" onclick="createDiv(1, 1)">1</div> 
+    <div class="button btn" style="left: 65px;" onclick="createDiv(1, 10)">1-10</div>
+    <div class="button btn" style="left: 80px;" onclick="createDiv(11, 20)">11-20</div>
+    <div class="button btn" style="left: 95px;" onclick="createDiv(20, 20)">20</div>
+    
+    <script>
+        let array = [];
+        let intervals = [];
+
+        function updateResults(){
+            if (array.length > 10){
+                array.splice(0, 1);
+            }
+            let num = document.getElementById('results').innerText;
+            document.getElementById('results').innerText = array.join(", ") + " <";
+            document.getElementById('resultsStroke').innerText = array.join(", ") + " <";
+
+        }
+
+        function createDiv(min, max) {
+            const div = document.createElement('div');
+            div.className = 'div';
+            div.style.filter = `hue-rotate(${Math.random() * 360}deg)`; 
+            document.getElementById('container').appendChild(div);
+            
+            const img = document.createElement('img');
+            img.src = 'img/d20.png';
+            div.appendChild(img);
+            
+            const num = document.createElement('span');
+            num.className = 'span';
+            div.appendChild(num);
+            
+            moveImg(div, num, min, max);
+        }
+
+        function moveImg(div, num, min, max) {
+            let x = 0;
+            let y = 0;
+
+            let xspeed = Math.random() * 11 + 3;
+            let yspeed = Math.random() * 11 + 3;
+
+            const container = document.getElementById('container');
+            
+            function animate() {
+                x += xspeed;
+                y += yspeed;
+
+                if (x <= 0 || x >= container.clientWidth - div.clientWidth) {
+                    xspeed = -xspeed;
+                    
+                    num.innerText = Math.floor(Math.random() * (max - min + 1)) + min;
+                    
+                    if (xspeed > 3.24 || xspeed < -3.24 || yspeed > 3.24 || yspeed < -3.24){
+                        num.innerText = Math.floor(Math.random() * 20) + 1;
+                    }
+                    slower();
+                }
+                if (y <= 0 || y >= container.clientHeight - div.clientHeight) {
+                    yspeed = -yspeed;
+
+                    num.innerText = Math.floor(Math.random() * (max - min + 1)) + min;
+                    
+                    if (xspeed > 3.24 || xspeed < -3.24 || yspeed > 3.24 || yspeed < -3.24){
+                        num.innerText = Math.floor(Math.random() * 20) + 1;
+                    }
+                    slower();
+                }
+
+                if (xspeed < 0.05 && yspeed < 0.05 && xspeed > -0.05 && yspeed > -0.05){
+                    clearInterval(intervalId);
+                    let numT = num.innerText;
+                    if (numT.length < 2){
+                        numT = "0" + numT; 
+                    }
+                    array.push(numT);
+                    updateResults();
+                }
+
+                div.style.left = x + "px";
+                div.style.top = y + "px";
+                div.style.filter = `hue-rotate(${(performance.now() / 10) % 360}deg)`; 
+            }
+            const intervalId = setInterval(animate, 10);
+            intervals.push(intervalId);
+
+            function slower(){
+                setTimeout(() => {
+                    xspeed = xspeed / 1.8;
+                    yspeed = yspeed / 1.8;  
+
+                    if (xspeed < 1.8 && xspeed > -1.8 && yspeed < 1.8 && yspeed > -1.8) {
+                        setInterval(() => {
+                            xspeed = xspeed / 1.15;
+                            yspeed = yspeed / 1.15;  
+                        }, 100);
+                    }
+                }, 80);
+            }
+        }
+    </script>
+</body>
+</html>
