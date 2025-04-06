@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Click Tapper</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+            background-color: #f0f0f0;
+        }
+        #output {
+            font-size: 48px;
+            margin-top: 20px;
+        }
+        button {
+            font-size: 24px;
+            padding: 15px 30px;
+            cursor: pointer;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Натискай будь-де для запуску!</h1>
+    <div id="output">0.00</div>
+    <button id="resetBtn">Скинути</button>
+
+    <script>
+        let startTime = null;
+        let clicks = 0;
+        let running = false;
+
+        document.body.addEventListener('keydown', startOrClick);
+        document.body.addEventListener('mousedown', startOrClick); // для миші
+
+        document.getElementById('resetBtn').addEventListener('click', () => {
+            startTime = null;
+            clicks = 0;
+            running = false;
+            document.getElementById('output').textContent = '0.00';
+        });
+
+        function startOrClick(e) {
+            if (!running) {
+                startTime = performance.now();
+                running = true;
+            } else {
+                clicks++;
+                updateCPM();
+            }
+        }
+
+        function updateCPM() {
+            let elapsedMs = performance.now() - startTime;
+            let cpm = (60 * clicks * 1000) / elapsedMs;
+
+            // Нормалізація до меж 50–400, як у твоєму коді
+            while (cpm < 50 || cpm > 400) {
+                if (cpm < 50) cpm *= 2;
+                if (cpm > 400) cpm /= 2;
+            }
+
+            document.getElementById('output').textContent = cpm.toFixed(2);
+        }
+    </script>
+
+</body>
+</html>
