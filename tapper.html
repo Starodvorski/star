@@ -24,17 +24,16 @@
 </head>
 <body>
 
-    <h1>Натискай будь-де для запуску!</h1>
     <div id="output">0.00</div>
-    <button id="resetBtn">Скинути</button>
+    <button id="tap">Жми</button>
+    <button id="resetBtn">Скинуть</button>
 
     <script>
         let startTime = null;
         let clicks = 0;
         let running = false;
 
-        document.body.addEventListener('keydown', startOrClick);
-        document.body.addEventListener('mousedown', startOrClick); // для миші
+        document.getElementById('tap').addEventListener('click', startOrClick);
 
         document.getElementById('resetBtn').addEventListener('click', () => {
             startTime = null;
