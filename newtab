@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Black Tab</title>
+    <style>
+      body {
+        margin: 0;
+        background: black;
+      }
+    </style>
+  </head>
+  <body></body>
+</html>
